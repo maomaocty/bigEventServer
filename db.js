@@ -1,5 +1,5 @@
 function db(sql, params = null) {
-    const mysql = require(mysql)
+    const mysql = require('mysql')
     const conn = mysql.createConnection({
         // 连接地址
         host: 'localhost',
@@ -14,7 +14,7 @@ function db(sql, params = null) {
     })
     return new Promise((resolve, reject) => {
         conn.connect()
-        conn.query(sql.params, (err, result) => {
+        conn.query(sql, params, (err, result) => {
             err ? reject(err) : resolve(result)
         })
         conn.end()
